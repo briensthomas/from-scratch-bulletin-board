@@ -21,11 +21,11 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 
 ## Main/Home Page ##
-  <Div>Display posts on the home page
-  <h2> Title
-  <p> post description
-  <span>Contact/Poster information
-  <img> for images to go with the post.
+  Div - Display posts on the home page
+  h2 - Title
+  p - post description
+  span - Contact/Poster information
+  img - for images to go with the post.
 
 ``render-utils.js``
 export function renderPosts() {
@@ -55,7 +55,7 @@ const posts = await getPosts();
   }
 
 
-  <button>Login/Register Button for users to sign in with -- redirects to authentication page
+  button - Login/Register Button for users to sign in with -- redirects to authentication page
 
 ``app.js``
 Login/Register Button: .addEventListener('click', () => {
@@ -118,18 +118,18 @@ Create New Post Button:
 })
 
 ## Create Post Page ##
-<div>To contain new post form
-<form>To save the user's post information
-<label>Title
-  <input>User's title for the post
-<label>Description
-  <input>User's content for the post
-<label>Contact
-  <input>Contact info for the user?
-<label>Image
-  <input>Save the user's image to the database?
+div - To contain new post form
+form - To save the user's post information
+label - Title
+  input - User's title for the post
+label -Description
+  input - User's content for the post
+label - Contact
+  input - Contact info for the user?
+label - Image
+  input - Save the user's image to the database?
 
-<button>Submit Form
+button - Submit Form
 
 ``create-post-page.js``
 createPostForm.addEventListener('submit', async (e) => {
