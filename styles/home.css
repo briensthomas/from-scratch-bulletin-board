@@ -1,1 +1,54 @@
-/* add home page styles here */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-listings {
+    width: 650px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    border: 2px solid black;
+}
+
+.div-left {
+    display: flex;
+    max-width: 50%;
+}
+
+.div-left img {
+    display: flex;
+    justify-items: center;
+    padding: 10px;
+}
+
+.div-right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.post-title {
+    display: flex;
+    font-size: 1.5rem;
+    justify-content: space-around;
+}
+
+.post-description {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-contact {
+    display: flex;
+    align-self: flex-end;
+
+}

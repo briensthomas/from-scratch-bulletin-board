@@ -11,7 +11,7 @@ If you work on more than one feature at a time, you are guaranteed to multiply y
 1) **Look at the drawing and name the HTML elements you'll need to realize your vision**
 
 script tag for HTML:
-<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+`<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>`
 
 ``fetch-util.js``
 const SUPABASE_URL = '';
