@@ -4,6 +4,10 @@ import { renderPosts } from './render-utils.js';
 // let state
 
 const main = document.querySelector('main');
+
+const authButton = document.getElementById('authentication-button');
+
+
 // set event listeners 
   // get user input
   // use user input to update state 
@@ -19,3 +23,7 @@ async function loadData() {
 }
 
 loadData();
+
+authButton.addEventListener('click', () => {
+    window.location.href = '/authentication-page';
+});
