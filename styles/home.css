@@ -61,11 +61,13 @@ header {
     display: flex;
     justify-items: center;
     padding: 10px;
+    max-width: 315px;
 }
 
 .div-right {
     display: flex;
     flex-direction: column;
+    padding: 10px;
     width: 50%;
 }
 
