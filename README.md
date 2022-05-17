@@ -11,14 +11,18 @@ If you work on more than one feature at a time, you are guaranteed to multiply y
 1) **Look at the drawing and name the HTML elements you'll need to realize your vision**
 
 script tag for HTML:
-`<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>`
+```
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+```
+SUPABASE import code in js:
+```js
+fetch-util.js
 
-``fetch-util.js``
 const SUPABASE_URL = '';
 const SUPABASE_KEY = '';
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+```
 
 ## Main/Home Page ##
   Div - Display posts on the home page
@@ -27,7 +31,9 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   span - Contact/Poster information
   img - for images to go with the post.
 
-``render-utils.js``
+```js
+render-utils.js
+
 export function renderPosts() {
   const div = document.createElement('div');
 
@@ -46,27 +52,34 @@ export function renderPosts() {
   div.append('h2', 'p', 'span', 'img');
   return div;
 }
+```
 
-``app.js``
+
+```js
+app.js
+
 const posts = await getPosts();
   for (let post of posts) {
     const postDiv = renderPosts(post);
     PlaceToAppend.append(postDiv);
   }
+```
 
+-   [ ] button - Login/Register Button for users to sign in with -- redirects to authentication page
 
-  button - Login/Register Button for users to sign in with -- redirects to authentication page
+```js
+app.js
 
-``app.js``
 Login/Register Button: .addEventListener('click', () => {
   location.replace('/authentication-page');
 })
+```
 
 ## Login Page ##
   Div to Contain both forms
   Span/Label for each form: Login, and a New User Sign Up
   
-  Login Form:
+    Login Form:
     Input for e-mail
     Input for password
     button for submit
@@ -75,7 +88,10 @@ Login/Register Button: .addEventListener('click', () => {
     Input for e-mail
     Input for password
     button for submit
- ``app.js``
+
+ ```js
+ app.js
+
   signUpForm .addEventListener('submit', async (e) => {
     e.preventDefault();
     const data = new FormData(signUpForm);
@@ -84,8 +100,11 @@ Login/Register Button: .addEventListener('click', () => {
       location.replace('/');
     }
   })
+  ```
   
-  ``fetch-utils.js``
+  ```js
+  fetch-utils.js
+
   export async function signUpUser(email, password) {
       const response = client.auth.signUp({ email, password });
       if (response.user) {
@@ -94,57 +113,75 @@ Login/Register Button: .addEventListener('click', () => {
         console.error(response.error);
       }
   }
-
+```
 ## Updated Home Page ##
   Button: Login/Register Button re-displayed as logout 
   Button: Create New Post 
 
 Logout Button:
-``app.js``
+```js
+app.js
+
 .addEventListener('click', async () => {
   await logout();
 });
+```
+```js
+fetch-utils.js
 
-``fetch-utils.js``
 export async function logout() {
   await client.auth.signOut();
   return (location.replace('/'));
 }
+```
 
-Create New Post Button:
-``app.js``
+- [] Create New Post Button:
+```js
+app.js
+
 .addEventListener('click', () => {
   location.replace('create-post-page');
 })
+```
 
 ## Create Post Page ##
-div - To contain new post form
-form - To save the user's post information
-label - Title
-  input - User's title for the post
-label -Description
-  input - User's content for the post
-label - Contact
-  input - Contact info for the user?
-label - Image
-  input - Save the user's image to the database?
+    div - To contain new post form
+    form - To save the user's post information
+    label - Title
+      input - User's title for the post
+    label -Description
+      input - User's content for the post
+    label - Contact
+      input - Contact info for the user?
+    label - Image
+      input - Save the user's image to the database?
 
-button - Submit Form
+    button - Submit Form
 
-``create-post-page.js``
+```js
+create-post-page.js
+
 createPostForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const data = new FormData(createPostForm);
-  const post = await createPost(data.get('title'), data.get('description'), data.get('contact'), data.get('image'));
+  const newPost = {
+    title: data.get('title'),
+    description: data.get('description'),
+    contact: data.get('contact'),
+    image: data.get('image'),
+  }
   return (location.replace('/'));
 });
+```
 
 <!-- Disregard above maybe? Demo code has the format below -->
-``create-post-page.js``
+```js
+create-post-page.js
+
 createPostForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const data = new FormData(createPostForm);
-  await createPost({
+  const createPost({
     title: data.get('title'),
     description: data.get('description'),
     contact: data.get('contact'),
@@ -152,12 +189,16 @@ createPostForm.addEventListener('submit', async (e) => {
   }),
   location.replace('/');
 })
+```
 
-``fetch-utils.js``
-export async function createPost(title, description, contact, image) {
+```js
+fetch-utils.js
+
+export async function createPost(post) {
   const response = await client.from('TABLE NAME').insert(post);
+  return response.data
 })
-
+```
 
 1) **Look at the drawing and imagine using the app. What _state_ do you need to track?** 
 1) **For each HTML element ask: Why do I need this? (i.e., "we need div to display the results in")** 
