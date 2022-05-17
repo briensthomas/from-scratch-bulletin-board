@@ -6,8 +6,10 @@ body {
 
 main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 header {
@@ -43,25 +45,26 @@ header {
 }
 
 .post-listings {
-    width: 650px;
+    max-width: 550px;
+    max-height: 350px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin: 10px;
     border: 2px solid black;
 }
 
 .div-left {
     display: flex;
     max-width: 50%;
+    margin: 10px;
 }
 
 .div-left img {
     display: flex;
     justify-items: center;
-    padding: 10px;
-    max-width: 315px;
+    max-width: 100%;
 }
 
 .div-right {
