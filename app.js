@@ -6,12 +6,8 @@ import { renderPosts } from './render-utils.js';
 const main = document.querySelector('main');
 
 const authButton = document.getElementById('authentication-button');
+const createPostButton = document.getElementById('create-post-button');
 
-
-// set event listeners 
-  // get user input
-  // use user input to update state 
-  // update DOM to reflect the new state
 
 async function loadData() {
     const posts = await fetchPosts();
@@ -26,4 +22,8 @@ loadData();
 
 authButton.addEventListener('click', () => {
     window.location.href = '/authentication-page';
+});
+
+createPostButton.addEventListener('click', () => {
+    window.location.href = '/create-post';
 });
