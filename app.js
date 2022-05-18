@@ -1,5 +1,5 @@
 // import functions and grab DOM elements
-import { fetchPosts } from './fetch-utils.js';
+import { fetchPosts, getUser, logout } from './fetch-utils.js';
 import { renderPosts } from './render-utils.js';
 // let state
 
@@ -15,15 +15,32 @@ async function loadData() {
         const postDiv = renderPosts(post);
         main.append(postDiv);
     }
+
+    const user = getUser();
+    if (user) {
+        authButton.textContent = 'Logout';
+        authButton.addEventListener('click', handleLogout);
+    } else {
+        authButton.textContent = 'Sign In / Sign Up';
+        authButton.addEventListener('click', handleAuthentication);
+    }
 }
 
 loadData();
 
-authButton.addEventListener('click', () => {
-    window.location.href = '/authentication-page';
-});
+// authButton.addEventListener('click', () => {
+//     window.location.href = '/authentication-page';
+// });
 
 createPostButton.addEventListener('click', () => {
     window.location.href = '/create-post';
 });
 
+//handle Authentication and Logout
+async function handleAuthentication() {
+    window.location.href = '/authentication-page';
+}
+
+async function handleLogout() {
+    await logout();
+}
