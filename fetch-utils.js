@@ -13,6 +13,15 @@ export async function signUpUser(email, password) {
     if (response.user) {
         return response.user;
     } else {
-        console.error;
+        console.error(response.error);
+    }
+}
+
+export async function loginUser(email, password) {
+    const response = await client.auth.signIn({ email, password });
+    if (response.user) {
+        return response.user;
+    } else {
+        console.error(response.error);
     }
 }
