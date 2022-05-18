@@ -8,7 +8,6 @@ const main = document.querySelector('main');
 const authButton = document.getElementById('authentication-button');
 const createPostButton = document.getElementById('create-post-button');
 
-
 async function loadData() {
     const posts = await fetchPosts();
     
@@ -27,3 +26,4 @@ authButton.addEventListener('click', () => {
 createPostButton.addEventListener('click', () => {
     window.location.href = '/create-post';
 });
+
