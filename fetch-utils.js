@@ -50,7 +50,6 @@ export async function createNewPost(post) {
     } else {
         console.error(response.error);
     }
-    console.log(response.data);
 }
 
 //logout function
