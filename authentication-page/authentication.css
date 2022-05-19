@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+input {
+    margin: 5px;
+}
+
+.login-form {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid black;
+}
+
+.signup-form {
+    width: 260px;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid black;
+}
